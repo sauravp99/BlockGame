@@ -1,0 +1,23 @@
+ Notes: 
+
+    Debug.Log() or print() :  No difference
+    
+    Time.delta : To control differences in fps, calculates on seconds instead of frames
+    
+    FixedUpdate:
+        Intervals between frames are same
+        Used for physics: adjusting Rigidbody objects
+    
+    Layers and Tags for labeling objects (attributes): lock layers, call tag attribute
+
+    Edit --> Snap settings : Control how objects relate to grid --> Ctrl (Similar to pixel placement PS)
+
+    To add smooth movement: ForceMode.VelocityChange, drag (more airresistence, slows down faster)
+
+    For better visuals: Window --> Rendering --> Lighting settings --> Fog 
+        Distant obstacles not visible
+
+    Shortcuts:
+        Shift + space : Maximize game view
+        Ctrl + d : Duplicate objects
+        Ctrl + p : Run
