@@ -9,7 +9,7 @@ public class Speedboost : MonoBehaviour{
     private void OnTriggerEnter(Collider other) {
             
             if(other.GetComponent<Collider>().tag == "Player"){
-                movement.forwardForce = 3000f;
+                // movement.forwardForce = 3000f;
                 movement.jumpForce = 4f;
             }
     }

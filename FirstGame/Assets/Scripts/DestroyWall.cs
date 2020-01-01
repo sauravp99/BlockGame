@@ -13,9 +13,7 @@ public class DestroyWall : MonoBehaviour{
     private void OnCollisionEnter(Collision other) {
         
         if(other.collider.tag == "Player"){
-            
-            // self.AddForce(0,0,-500); //When hit: pushes Player obj back 
-            // movement.forwardForce = 0;
+
             gameObject.SetActive(false);
             obstSize = transform.localScale;
             // pieceL = obstSize.x / 3;

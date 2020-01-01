@@ -16,7 +16,7 @@ public class PlayerCollision : MonoBehaviour{
         if(obstacle.collider.tag == "Obstacle"){
             print(obstacle.collider.tag); //Displays wall
             self.AddForce(0,0,-500); //When hit: pushes Player obj back 
-            movement.forwardForce = 0;
+            // movement.forwardForce = 0;
             movement.sidewaysForce = 0;
         }
     }
