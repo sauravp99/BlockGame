@@ -126,7 +126,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh12328
+  m_Name: pb_Mesh16126
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1154,9 +1154,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 33840485}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4c1e9738a55b6549bc6e627b13222d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e9949ac1f486b34d9baffc084b43502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animControllerR: {fileID: 537695651}
+  animControllerL: {fileID: 142407066}
 --- !u!65 &33840487
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1222,12 +1224,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33840485}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -20.35, y: 32.08, z: -32.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &142407059
 GameObject:
@@ -1245,11 +1247,11 @@ GameObject:
   - component: {fileID: 142407060}
   - component: {fileID: 142407066}
   m_Layer: 0
-  m_Name: Slide doorL
+  m_Name: SlidingDoorL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!64 &142407060
 MeshCollider:
@@ -1618,7 +1620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142407059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.76, y: 31.57, z: -31.93}
+  m_LocalPosition: {x: -22.7, y: 31.57, z: -31.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1719,11 +1721,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247693511}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.3199997, y: 1.7400017, z: -5.3899994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1144241881}
+  m_Father: {fileID: 932960981}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &537695644
@@ -1742,11 +1744,11 @@ GameObject:
   - component: {fileID: 537695645}
   - component: {fileID: 537695651}
   m_Layer: 0
-  m_Name: Slide doorR
+  m_Name: SlidingDoorR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!64 &537695645
 MeshCollider:
@@ -2115,7 +2117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537695644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.76, y: 31.57, z: -29.14}
+  m_LocalPosition: {x: -22.71, y: 31.57, z: -29.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2146,7 +2148,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh12368
+  m_Name: pb_Mesh16172
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2440,13 +2442,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932960974}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.7423069, z: -0, w: 0.6700601}
   m_LocalPosition: {x: -16.86, y: 32.129997, z: -29.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 247693514}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -95.857, z: 0}
 --- !u!1 &1144241879
 GameObject:
   m_ObjectHideFlags: 0
@@ -2476,12 +2479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5675133a06a44f40be0641311b5dbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 1, z: -3}
-  cameraMSpeed: 120
-  cameraObj: {fileID: 0}
-  playerObj: {fileID: 932960974}
   player: {fileID: 932960981}
-  clampAngle: 80
   moveSensitivity: 100
   mouseX: 0
   mouseY: 0
@@ -2495,8 +2493,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -16.54, y: 33.87, z: -35.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 247693514}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4477,7 +4474,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1866026532
 MeshCollider:
@@ -4499,7 +4496,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh12302
+  m_Name: pb_Mesh16102
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4662,7 +4659,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh12276
+  m_Name: pb_Mesh12284
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
