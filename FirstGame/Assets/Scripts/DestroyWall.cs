@@ -14,7 +14,7 @@ public class DestroyWall : MonoBehaviour{
         
         if(other.collider.tag == "Player"){
 
-            gameObject.SetActive(false);
+                gameObject.SetActive(false);
             obstSize = transform.localScale;
             // pieceL = obstSize.x / 3;
             // pieceH = obstSize.y / 3;
