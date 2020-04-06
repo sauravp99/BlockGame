@@ -8,6 +8,11 @@ public class PlayerShooting : MonoBehaviour
     public float range = 100f;
 
     public Transform shootingPoint;
+
+    public float shootRate;
+
+    public GameObject m_shotPrefab;
+
     void Start()
     {
         
@@ -28,8 +33,8 @@ public class PlayerShooting : MonoBehaviour
             Debug.Log(cast.transform.name);
 
             GameObject laser = GameObject.Instantiate(m_shotPrefab, transform.position, transform.rotation) as GameObject;
-            laser.GetComponent<ShotBehavior>().setTarget(hit.point);
-            
+            laser.GetComponent<ShotBehavior>().setTarget(cast.point);
+
             Enemy enemy = cast.transform.GetComponent<Enemy>();
             if(enemy != null){
                 enemy.ReduceHealth(damage);
