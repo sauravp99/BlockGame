@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour
     
     public float distanceFromWall = 0.1f;
     public float moveSpeed = 5f;
-    public bool alive;
+
+    private GameObject spawner;
 
     // Update is called once per frame
     // Enemy enemy = cast.transform.GetComponent<Enemy>();
@@ -17,11 +18,11 @@ public class Enemy : MonoBehaviour
             // }
     
     void Start() {
-        alive = true;
+        SpawnEnemy.enemiesOnMap++;
     }
     void Update()
     {
-        if(alive){ transform.Translate (0, 0, moveSpeed * Time.deltaTime); }
+        transform.Translate (0, 0, moveSpeed * Time.deltaTime);
         moveAround();
     }
 
@@ -36,11 +37,13 @@ public class Enemy : MonoBehaviour
 				// 	_paintball.transform.position = transform.TransformPoint (Vector3.forward * 1.5f);
 				// 	_paintball.transform.rotation = transform.rotation;
 				// }
-			} //else
-            if (hit.distance < distanceFromWall) {
+            if (hit.distance <= distanceFromWall) {
+                moveSpeed = 0f;
 				float angle = Random.Range (-110, 110);
 				transform.Rotate (0, angle, 0);
+                moveSpeed = 5f;
 			}
+			} //else
 		}
     //}
     public void ReduceHealth(float damagePoint){
@@ -50,7 +53,9 @@ public class Enemy : MonoBehaviour
         }
     }
     void Despawn(){
+        SpawnEnemy.enemiesOnMap--;
         Destroy(gameObject);
+
     }
 }
 
