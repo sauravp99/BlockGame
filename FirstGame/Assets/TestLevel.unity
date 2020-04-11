@@ -310,6 +310,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &383731561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383731555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ee850035f1d944f9f58a2027f686cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 383731560}
+  movement: {fileID: 821682343}
+  obstSize: {x: 0, y: 0, z: 0}
+  pivotDistance: 0
+  pivot: {x: 0, y: 0, z: 0}
 --- !u!1001 &420740258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -551,9 +568,9 @@ GameObject:
   - component: {fileID: 821682346}
   - component: {fileID: 821682345}
   - component: {fileID: 821682344}
-  - component: {fileID: 821682343}
   - component: {fileID: 821682342}
   - component: {fileID: 821682348}
+  - component: {fileID: 821682343}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -592,8 +609,9 @@ MonoBehaviour:
   rb: {fileID: 821682342}
   sidewaysForce: 200
   jumpForce: 3
+  Speed: 20.04
   touchingFloor: 0
-  rotateSpeed: 150
+  rotateSpeed: 2000
 --- !u!65 &821682344
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -680,7 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 821682342}
-  movement: {fileID: 821682343}
+  movement: {fileID: 0}
   obstSize: {x: 0, y: 0, z: 0}
   pivotDistance: 0
   pivot: {x: 0, y: 0, z: 0}
@@ -1234,6 +1252,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   sidewaysForce: 200
   jumpForce: 3
+  Speed: 0
   touchingFloor: 0
   rotateSpeed: 2000
 --- !u!135 &1589462549

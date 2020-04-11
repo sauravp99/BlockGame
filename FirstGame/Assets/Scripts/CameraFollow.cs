@@ -18,7 +18,7 @@ public class CameraFollow : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         CamControl();
       //  ViewObstructed();

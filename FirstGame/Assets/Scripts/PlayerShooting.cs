@@ -12,79 +12,37 @@ public class PlayerShooting : MonoBehaviour
     public float shootRate;
 
     public GameObject m_shotPrefab;
-
-    void Start()
-    {
-        
-    }
-
+    
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(Input.GetButtonDown("Fire1")){
-            Shoot();
+            RaycastHit cast; // Cast a raybeam 
+            //When beam hits object log in console
+            
+            Vector3 forward = shootingPoint.TransformDirection(Vector3.forward) * 30;
+            Debug.DrawRay(shootingPoint.position, forward, Color.green);
+            
+            if(Physics.Raycast(shootingPoint.position + new Vector3(0,2.5f,0),shootingPoint.forward,out cast, range)){
+                Debug.Log(cast.transform.name);
+                
+                StartCoroutine(ShootLaser(cast));
         }
     }
-    void Shoot(){
+    IEnumerator ShootLaser(RaycastHit hit){
         
-        RaycastHit cast; // Cast a raybeam 
-        //When beam hits object log in console
-        if(Physics.Raycast(shootingPoint.position,shootingPoint.forward,out cast, range)){
-            Debug.Log(cast.transform.name);
-
             GameObject laser = GameObject.Instantiate(m_shotPrefab, transform.position, transform.rotation) as GameObject;
-            laser.GetComponent<ShotBehavior>().setTarget(cast.point);
-
-            Enemy enemy = cast.transform.GetComponent<Enemy>();
+            laser.tag = "Bullet";
+            laser.GetComponent<ShotBehavior>().setTarget(hit.point);
+            
+            Enemy enemy = hit.transform.GetComponent<Enemy>();
             if(enemy != null){
                 enemy.ReduceHealth(damage);
             }
-        }
 
+            yield return new WaitForSeconds(0.5f);
+
+            Destroy(laser);
+        }
     }
 }
-
-// using System.Collections;
-
-// public class PlayerShooting : MonoBehaviour
-// {
-//     public float shootRate;
-//     private float m_shootRateTimeStamp;
-
-//     public GameObject m_shotPrefab;
-
-//     RaycastHit hit;
-//     float range = 1000.0f;
-
-
-//     void Update()
-//     {
-
-//         if (Input.GetMouseButton(0))
-//         {
-//             if (Time.time > m_shootRateTimeStamp)
-//             {
-//                 shootRay();
-//                 m_shootRateTimeStamp = Time.time + shootRate;
-//             }
-//         }
-
-//     }
-
-//     void shootRay()
-//     {
-//         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-//         if (Physics.Raycast(ray, out hit, range))
-//         {
-//             GameObject laser = GameObject.Instantiate(m_shotPrefab, transform.position, transform.rotation) as GameObject;
-//             laser.GetComponent<ShotBehavior>().setTarget(hit.point);
-//             GameObject.Destroy(laser, 2f);
-
-
-//         }
-
-//     }
-
-
-
-// }

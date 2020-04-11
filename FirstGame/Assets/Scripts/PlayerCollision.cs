@@ -15,9 +15,16 @@ public class PlayerCollision : MonoBehaviour{
 
         if(obstacle.collider.tag == "Obstacle"){
             print(obstacle.collider.tag); //Displays wall
-            self.AddForce(0,0,-500); //When hit: pushes Player obj back 
+            //movement.Speed = 0;
+            //self.AddForce(0,0,-70); //When hit: pushes Player obj back 
+            //movement.Speed = 10;
+            // movement.Speed = 10;
             // movement.forwardForce = 0;
-            movement.sidewaysForce = 0;
+            //movement.sidewaysForce = 0;
         }
+        // while(obstacle.collider.tag == "Obstacle"){
+        //     movement.Speed = 0;
+        //     self.AddForce(0,0,-100);
+        // }
     }
 }

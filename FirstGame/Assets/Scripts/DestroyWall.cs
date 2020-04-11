@@ -3,7 +3,7 @@
 public class DestroyWall : MonoBehaviour{
 
     public Rigidbody self;
-    public PlayerMovement movement;
+    //public PlayerMovement movement;
     // public Transfrom transfrom;
     // public Transfrom transform;
     public Vector3 obstSize; //Stores x, y, z values for obstacle
@@ -12,9 +12,9 @@ public class DestroyWall : MonoBehaviour{
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision other) {
         
-        if(other.collider.tag == "Player"){
+            if(other.collider.tag == "Bullet"){
 
-                gameObject.SetActive(false);
+            gameObject.SetActive(false);
             obstSize = transform.localScale;
             // pieceL = obstSize.x / 3;
             // pieceH = obstSize.y / 3;
