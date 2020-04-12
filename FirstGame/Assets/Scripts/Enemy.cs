@@ -6,10 +6,12 @@ public class Enemy : MonoBehaviour
 {
     public float health = 50f;
     
-    public float distanceFromWall = 0.1f;
+    public float distanceFromWall = 0.5f;
     public float moveSpeed = 5f;
 
     private GameObject spawner;
+
+    private bool alive;
 
     // Update is called once per frame
     // Enemy enemy = cast.transform.GetComponent<Enemy>();
@@ -18,12 +20,16 @@ public class Enemy : MonoBehaviour
             // }
     
     void Start() {
+        alive = true;
         SpawnEnemy.enemiesOnMap++;
+        
     }
     void Update()
     {
-        transform.Translate (0, 0, moveSpeed * Time.deltaTime);
-        moveAround();
+        if(alive){
+            transform.Translate (0, 0, moveSpeed * Time.deltaTime);
+            moveAround();
+        }
     }
 
     void moveAround(){
@@ -54,6 +60,7 @@ public class Enemy : MonoBehaviour
     }
     void Despawn(){
         SpawnEnemy.enemiesOnMap--;
+        alive = false;
         Destroy(gameObject);
 
     }

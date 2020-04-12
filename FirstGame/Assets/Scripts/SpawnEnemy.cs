@@ -35,9 +35,10 @@ public class SpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print("Enemies left:" + enemiesOnMap);
       if(enemiesOnMap < 3){
             enemy = Instantiate(enemyPrefab) as GameObject;
-            enemy.transform.position = spawnPoints[Random.Range(0,2)];
+            enemy.transform.position = spawnPoints[Random.Range(0,3)];
       }  
     }
 }
