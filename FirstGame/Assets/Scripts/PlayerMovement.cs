@@ -1,25 +1,86 @@
-﻿// using System.Collections;
-// using System.Collections.Generic;
+﻿// // using System.Collections;
+// // using System.Collections.Generic;
+// using UnityEngine;
+
+// public class PlayerMovement : MonoBehaviour{
+    
+//     public Rigidbody rb;
+//     public float sidewaysForce = 200f;
+//     public float jumpForce = 3f;
+//     public float Speed;
+//     public bool touchingFloor = false;
+//     public float rotateSpeed = 2000f;
+
+//     public CharacterController controller;
+
+//     void Update(){
+//         stopRotation();
+//         movement();
+//     }
+
+//     void OnCollisionStay(Collision obstacle) { //Takes in arg if we need to check which obj it is colliding to
+//         if(obstacle.collider.tag == "Platform"){
+//             touchingFloor = true;
+//         }
+//     }
+//     void stopRotation(){
+//         if(touchingFloor == true){
+//             rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+//         }
+//     }
+
+//     void movement(){
+//         // float speed = 5f; 
+//         // transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * rotateSpeed, 0);
+
+//         // transform.Translate(0, 0, Input.GetAxis("Vertical") * Time.deltaTime * speed);
+        
+//         float hor = Input.GetAxis("Horizontal");
+//         float ver = Input.GetAxis("Vertical");
+        
+//         Vector3 move = transform.right * hor + transform.forward * hor;
+        
+//         // Vector3 playerMovement = new Vector3(hor, 0f, ver) * Speed * Time.deltaTime;
+//         // transform.Translate(playerMovement, Space.Self);
+
+//         controller.Move(move * Speed * Time.deltaTime);
+
+//         if(Input.GetKey("space") && touchingFloor){ //If the obj is touching the floor, then jump
+//             rb.AddForce(0,jumpForce,0, ForceMode.Impulse);
+//             touchingFloor = false; //After jump, obj is not touchingFloor hence false
+//         }
+//     }
+// }
+
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour{
-    
-    public Rigidbody rb;
-    public float sidewaysForce = 200f;
-    public float jumpForce = 3f;
-    public float Speed;
-    public bool touchingFloor = false;
-    public float rotateSpeed = 2000f;
+public class PlayerMovement : MonoBehaviour {
 
-    void FixedUpdate(){
-        stopRotation();
-        movement();
-    }
+    public Rigidbody rb;
+//     public float sidewaysForce = 200f;
+//     public float Speed;
+    public bool touchingFloor = false;
+//     public float rotateSpeed = 2000f;
+
+	public float speed = 4.0f;
+	public float gravity = -9.8f;
+
+    public float jumpForce = 3f;
+
+	private CharacterController _charCont;
+
+	// Use this for initialization
+	void Start () {
+		_charCont = GetComponent<CharacterController> ();
+	}
+	
 
     void OnCollisionStay(Collision obstacle) { //Takes in arg if we need to check which obj it is colliding to
         if(obstacle.collider.tag == "Platform"){
             touchingFloor = true;
-        }
+    }
     }
     void stopRotation(){
         if(touchingFloor == true){
@@ -27,20 +88,23 @@ public class PlayerMovement : MonoBehaviour{
         }
     }
 
-    void movement(){
-        // float speed = 5f; 
-        // transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * rotateSpeed, 0);
+	// Update is called once per frame
+	void Update () {
+        stopRotation();
+		float deltaX = Input.GetAxis ("Horizontal") * speed;
+		float deltaZ = Input.GetAxis ("Vertical") * speed;
+		Vector3 movement = new Vector3 (deltaX, 0, deltaZ);
+		movement = Vector3.ClampMagnitude (movement, speed); //Limits the max speed of the player
 
-        // transform.Translate(0, 0, Input.GetAxis("Vertical") * Time.deltaTime * speed);
-        
-        float hor = Input.GetAxis("Horizontal");
-        float ver = Input.GetAxis("Vertical");
-        Vector3 playerMovement = new Vector3(hor, 0f, ver) * Speed * Time.deltaTime;
-        transform.Translate(playerMovement, Space.Self);
+        // movement.y = gravity;
+
+		movement *= Time.deltaTime;		//Ensures the speed the player moves does not change based on frame rate
+		movement = transform.TransformDirection(movement);
+		_charCont.Move (movement);
 
         if(Input.GetKey("space") && touchingFloor){ //If the obj is touching the floor, then jump
-            rb.AddForce(0,jumpForce,0, ForceMode.Impulse);
-            touchingFloor = false; //After jump, obj is not touchingFloor hence false
-        }
-    }
+             rb.AddForce(0,jumpForce,0, ForceMode.Impulse);
+             touchingFloor = false; //After jump, obj is not touchingFloor hence false
+         }
+	}
 }
