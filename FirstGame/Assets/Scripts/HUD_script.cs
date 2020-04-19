@@ -6,23 +6,44 @@ public class HUD_script : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject inventory;
-
-    public bool showMsg = true;
+    public GameObject msgPanel;
+    
+    private int keyPieces = 4;
+    // public bool showMsg = true;
 
     // Update is called once per frame
     void Update()
     {
-        equipMessage();
+
     }
 
-    public void equipMessage(){
-        if(showMsg){
+    private void colorKeyParts(){
 
-            inventory.SetActive(true);
+        if(keyPieces == 1){
+            //Color slot 1
+        }else if(keyPieces == 2){
+            
+        }else if(keyPieces == 3){
+
+        }else{
+            //Color slot 4
+            // EnableDialog("Well well well...looks like you got the key")
+            //Disable keyslots
+        }
+
+    }
+
+    public void equipMessage(bool status){
+        if(status){
+
+            msgPanel.SetActive(true);
         }else{
 
-            inventory.SetActive(false);
+            msgPanel.SetActive(false);
         }
+    }
+    public void addItem(){
+            keyPieces++;
+            colorKeyParts();
     }
 }

@@ -11,23 +11,38 @@ public class PlayerCollision : MonoBehaviour{
 
     public HUD_script hud;
 
+    private bool equipObj = false;
+    private GameObject key;
     // public float pieceL;
     // public float pieceW;
     // public float pieceH;
 
-    void Start(){
+    void Update()
+    {
+        if(equipObj && Input.GetKeyDown(KeyCode.E)){
+            
+            Debug.Log("E Key pressed ");
+            Destroy(key);
+            hud.addItem();
+            hud.equipMessage(false);
+        }
     }
     void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<Collider>().tag == "key_piece"){
+        if(other.tag == "key_piece"){
+
             Debug.Log("Key touched");
-            hud.showMsg = true; 
+            equipObj = true;
+            key = other.gameObject;
+            hud.equipMessage(equipObj); 
         }
     }
+ 
     void OnTriggerExit(Collider other)
     {
-         if(other.GetComponent<Collider>().tag == "key_piece"){
-                hud.showMsg = false; 
+         if(other.tag == "key_piece"){
+                equipObj = false;
+                hud.equipMessage(equipObj);
             }
     }
 }
