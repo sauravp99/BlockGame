@@ -85,6 +85,7 @@ public class PlayerMovement : MonoBehaviour {
     void stopRotation(){
         if(touchingFloor == true){
             rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+            
         }
     }
 

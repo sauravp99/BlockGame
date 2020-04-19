@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
     float mouseX, mouseY;
 
     public Transform Obstruction;
-    float zoomSpeed = 2f;
+    // float zoomSpeed = 2f;
     
     void Start()
     {

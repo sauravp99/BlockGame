@@ -9,6 +9,8 @@ TagManager:
   - DestObstacle
   - Enemy
   - Bullet
+  - Canvas
+  - key_piece
   layers:
   - Default
   - TransparentFX
