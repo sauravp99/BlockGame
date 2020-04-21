@@ -2,13 +2,6 @@
 
 public class PlayerCollision : MonoBehaviour{
 
-    
-    public Rigidbody self;
-    public PlayerMovement movement;
-    public Vector3 obstSize; //Stores x, y, z values for obstacle
-    public float pivotDistance;
-    public Vector3 pivot;
-
     public HUD_script hud;
 
     private bool equipObj = false;
@@ -24,7 +17,8 @@ public class PlayerCollision : MonoBehaviour{
             Debug.Log("E Key pressed ");
             Destroy(key);
             hud.addItem();
-            hud.equipMessage(false);
+            equipObj = false;
+            hud.equipMessage(equipObj);
         }
     }
     void OnTriggerEnter(Collider other)
