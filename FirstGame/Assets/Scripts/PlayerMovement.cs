@@ -5,16 +5,24 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour{
     
     public Rigidbody rb;
-    public float jumpForce = 3f;
+        public float jumpForce = 1f;
     public float Speed = 0.5f;
 
     public float gravity = -9.81f;
     public bool touchingFloor = false;
     public CharacterController controller;
 
+    public Transform groundObj;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
+
+    Vector3 velocity;
+
     void Update(){
         // stopRotation();
         movement();
+        fallVelocity();
+        groundCheck();
     }
 
     void OnCollisionStay(Collision obstacle) { //Takes in arg if we need to check which obj it is colliding to
@@ -39,8 +47,23 @@ public class PlayerMovement : MonoBehaviour{
         controller.Move(move * Speed * Time.deltaTime);
 
         if(Input.GetKey("space") && touchingFloor){ //If the obj is touching the floor, then jump
-            rb.AddForce(0,jumpForce,0, ForceMode.Impulse);
-            touchingFloor = false; //After jump, obj is not touchingFloor hence false
+           velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+            // rb.AddForce(0,jumpForce,0, ForceMode.Impulse);
+            // touchingFloor = false; //After jump, obj is not touchingFloor hence false
+        }
+    }
+
+    void fallVelocity(){
+        velocity.y += gravity * Time.deltaTime;
+
+        controller.Move(velocity * Time.deltaTime);
+    }
+    
+    void groundCheck(){
+        touchingFloor = Physics.CheckSphere(groundObj.position,groundDistance,groundMask);
+        
+        if(touchingFloor && velocity.y < 0){
+            velocity.y = -2f;
         }
     }
 }
