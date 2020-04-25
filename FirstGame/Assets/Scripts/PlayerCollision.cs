@@ -4,39 +4,70 @@ public class PlayerCollision : MonoBehaviour{
 
     public HUD_script hud;
 
-    private bool equipObj = false;
-    private GameObject key;
-    // public float pieceL;
-    // public float pieceW;
-    // public float pieceH;
+    private bool pickUpObj = false;
+    private bool picked = false;
+    private GameObject lastItem;
+
+    public Transform pickDes;
+
 
     void Update()
     {
-        if(equipObj && Input.GetKeyDown(KeyCode.E)){
-            
-            Debug.Log("E Key pressed ");
-            Destroy(key);
-            hud.addItem();
-            equipObj = false;
-            hud.equipMessage(equipObj);
-        }
+        checkKeyPress();   
+        moveObjPicked();
     }
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "key_piece"){
+        if(other.gameObject.layer == 10){
 
-            Debug.Log("Key touched");
-            equipObj = true;
-            key = other.gameObject;
-            hud.equipMessage(equipObj); 
+            // Debug.Log("Key touched");
+            lastItem = other.gameObject;
+            pickUpObj = true;
+            hud.equipMessage(1,true); 
         }
     }
  
     void OnTriggerExit(Collider other)
     {
-         if(other.tag == "key_piece"){
-                equipObj = false;
-                hud.equipMessage(equipObj);
+        if(other.gameObject.layer == 10){
+
+            // Debug.Log("Key touched");
+            pickUpObj = false;
+            hud.equipMessage(1,false); 
+        }
+
+    }
+
+    void checkKeyPress(){
+
+        if(pickUpObj && Input.GetKeyDown(KeyCode.E)){
+
+           if(lastItem.tag == "key_piece"){
+
+                // Debug.Log("E Key pressed ");
+                Destroy(lastItem);
+                hud.addItem();
+                hud.equipMessage(1,false);
+           }
+           if(lastItem.tag == "chair_pick"){
+
+                picked = true;
+                
             }
+        }
+    }
+    void moveObjPicked(){
+        if(picked){
+            lastItem.transform.position = pickDes.position; 
+            // transform.position + new Vector3(2f,0,0);
+            // lastItem.GetComponent<Rigidbody>().useGravity = false;
+            hud.equipMessage(2,true);
+            if(Input.GetKeyDown(KeyCode.F)){
+                picked = false;
+                hud.equipMessage(2,false);
+                // lastItem.transform.position = lastItem.transform.position;
+                lastItem.GetComponent<Rigidbody>().useGravity = true;
+            }
+        }
     }
 }

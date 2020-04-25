@@ -48,10 +48,17 @@ public class HUD_script : MonoBehaviour
 
     }
 
-    public void equipMessage(bool status){
+    public void equipMessage(int choice,bool status){
         if(status){
-
+            
+            if(choice == 1){
+                msgPanel.GetComponent<Text>().text = "--Press E to equip--";
+            }
+            else if(choice == 2){
+                msgPanel.GetComponent<Text>().text = "--Press F to drop--";                 
+            }
             msgPanel.SetActive(true);
+
         }else{
 
             msgPanel.SetActive(false);

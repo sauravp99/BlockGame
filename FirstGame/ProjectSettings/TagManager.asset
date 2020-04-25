@@ -11,6 +11,7 @@ TagManager:
   - Bullet
   - Canvas
   - key_piece
+  - chair_pick
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - 
   - Environment
   - Floor
-  - 
+  - PickUpItem
   - 
   - 
   - 
