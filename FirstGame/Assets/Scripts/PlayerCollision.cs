@@ -58,15 +58,12 @@ public class PlayerCollision : MonoBehaviour{
     }
     void moveObjPicked(){
         if(picked){
+            
             lastItem.transform.position = pickDes.position; 
-            // transform.position + new Vector3(2f,0,0);
-            // lastItem.GetComponent<Rigidbody>().useGravity = false;
             hud.equipMessage(2,true);
             if(Input.GetKeyDown(KeyCode.F)){
                 picked = false;
                 hud.equipMessage(2,false);
-                // lastItem.transform.position = lastItem.transform.position;
-                lastItem.GetComponent<Rigidbody>().useGravity = true;
             }
         }
     }

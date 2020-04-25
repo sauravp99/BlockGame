@@ -52,10 +52,10 @@ public class HUD_script : MonoBehaviour
         if(status){
             
             if(choice == 1){
-                msgPanel.GetComponent<Text>().text = "--Press E to equip--";
+                msgPanel.GetComponentInChildren<Text>().text = "Press E to equip";
             }
             else if(choice == 2){
-                msgPanel.GetComponent<Text>().text = "--Press F to drop--";                 
+                msgPanel.GetComponentInChildren<Text>().text = "Press F to drop";                 
             }
             msgPanel.SetActive(true);
 
