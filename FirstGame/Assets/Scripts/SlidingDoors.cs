@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-public class SlidingDoors : MonoBehaviour{
+public class SlidingDoors : MonoBehaviour {
     
     [SerializeField] private Animator animControllerR, animControllerL;
     
         // private void
     private void OnTriggerEnter(Collider other) {
         
-        if(other.GetComponent<Collider>().tag == "Player"){
+        if (other.GetComponent<Collider>().tag == "Player") {
             animControllerL.SetBool("openDoor", true);
             animControllerR.SetBool("openDoor", true);
             // animControllerL.Play("lDoorOpen"); 
@@ -15,7 +15,7 @@ public class SlidingDoors : MonoBehaviour{
     }
     private void OnTriggerExit(Collider other) {
 
-        if(other.GetComponent<Collider>().tag == "Player"){
+        if (other.GetComponent<Collider>().tag == "Player") {
             animControllerL.SetBool("openDoor", false);
             animControllerR.SetBool("openDoor", false);
         }

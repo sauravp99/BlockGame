@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-public class TPCameraFollow : MonoBehaviour{
+public class TPCameraFollow : MonoBehaviour {
 
     public Transform player;
     public float distanceFromObject = 8f;
     public Vector3 offset;
 
-    void Update(){
+    void Update() {
 
         Vector3 lookOnObject = player.position - transform.position;
 

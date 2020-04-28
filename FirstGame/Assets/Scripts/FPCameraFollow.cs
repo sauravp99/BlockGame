@@ -37,30 +37,26 @@
 
 // }
 
-public class FPCameraFollow : MonoBehaviour{
+public class FPCameraFollow : MonoBehaviour {
     
     public Transform player;
-    
     public float moveSensitivity = 100f;
-
     float rotX = 0f;
-
-    void Start(){
+    void Start() {
 
             Cursor.lockState = CursorLockMode.Locked;
     }
-    void Update(){
+    void Update() {
 
         float mouseX = Input.GetAxis("Mouse X") * moveSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * moveSensitivity * Time.deltaTime;
-    
-		
+    	
         //We decrease the rotation so that camera isn't inverted
         rotX -= mouseY;
         rotX = Mathf.Clamp(rotX,-90f,90f); //Prevent camera's X rotattion to exceed 90
         
         transform.localRotation = Quaternion.Euler(rotX,0f, 0f);
-			player.Rotate(Vector3.up * mouseX);
+		player.Rotate(Vector3.up * mouseX);
     }
 
 }

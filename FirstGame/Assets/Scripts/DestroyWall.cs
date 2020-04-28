@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DestroyWall : MonoBehaviour{
+public class DestroyWall : MonoBehaviour {
 
     public Rigidbody self;
     //public PlayerMovement movement;
@@ -12,7 +12,7 @@ public class DestroyWall : MonoBehaviour{
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision other) {
         
-            if(other.collider.tag == "Bullet"){
+            if (other.collider.tag == "Bullet") {
 
             gameObject.SetActive(false);
             obstSize = transform.localScale;
@@ -32,9 +32,9 @@ public class DestroyWall : MonoBehaviour{
             pivot = new Vector3(pivotDistX, pivotDistY, pivotDistZ);
             // print(obstSize);
             // breakIntoPieces();
-            for(float x1 = 0; x1 <= obstSize.x * 3; x1++){
-                for(float y1 = 0; y1 <= obstSize.y * 5; y1++){
-                    for(float z1 = 0; z1 <= obstSize.z * 1; z1++){
+            for (float x1 = 0; x1 <= obstSize.x * 3; x1++) {
+                for (float y1 = 0; y1 <= obstSize.y * 5; y1++) {
+                    for (float z1 = 0; z1 <= obstSize.z * 1; z1++) {
                         print("Position: " + "x: " + x1 + " y: " + y1 + " z: " + z1);
                         // print("Piece length: " + pieceL + "Piece height: " + pieceH + "Piece width: " + pieceW);
                         breakIntoPieces(x1,y1,z1);
@@ -43,7 +43,7 @@ public class DestroyWall : MonoBehaviour{
             }
         }
     }
-    void breakIntoPieces(float x, float y, float z){
+    void breakIntoPieces(float x, float y, float z) {
         
         GameObject piece = GameObject.CreatePrimitive(PrimitiveType.Cube);
         piece.transform.position = transform.position + new Vector3(obstSize.x * x,obstSize.y * y,obstSize.z * z) - pivot;

@@ -2,30 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Droid_script : MonoBehaviour
-{
-    // Start is called before the first frame update
+public class Droid_script : MonoBehaviour {
+    
     public Transform player;
-    void Start()
-    {
-            
+
+    void Update() {
+
+        orbitPlayer();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        followPlayer();
-    }
-
-    void followPlayer(){
-
-        // transform.position = player.position + new Vector3(0.8f,0.2f,0.8f);
+    void orbitPlayer() { // For oribiting around player
+        
         Vector3 relativePos = (player.position + new Vector3(0, 1.5f, 0)) - transform.position;
-         Quaternion rotation = Quaternion.LookRotation(relativePos);
-         
-         Quaternion current = transform.localRotation;
-         
-         transform.localRotation = Quaternion.Slerp(current, rotation, Time.deltaTime);
-         transform.Translate(0, 0, 3 * Time.deltaTime);
+
+        Quaternion rotation = Quaternion.LookRotation(relativePos);
+        Quaternion current = transform.localRotation;
+        
+        // Uniform angular velocity around the player
+        transform.localRotation = Quaternion.Slerp(current, rotation, Time.deltaTime); 
+        transform.Translate(0, 0, 3 * Time.deltaTime);
     }
 }

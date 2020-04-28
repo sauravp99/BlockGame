@@ -1,24 +1,23 @@
 ﻿using UnityEngine;
 
-public class PlayerCollision : MonoBehaviour{
+public class PlayerCollision : MonoBehaviour {
 
     public HUD_script hud;
-
     private bool pickUpObj = false;
     private bool picked = false;
     private GameObject lastItem;
-
     public Transform pickDes;
 
+    void Update() {
 
-    void Update()
-    {
         checkKeyPress();   
         moveObjPicked();
     }
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.layer == 10){
+    void OnTriggerEnter(Collider other) {
+
+            // :)
+
+        if (other.gameObject.layer == 10) {
 
             // Debug.Log("Key touched");
             lastItem = other.gameObject;
@@ -27,9 +26,9 @@ public class PlayerCollision : MonoBehaviour{
         }
     }
  
-    void OnTriggerExit(Collider other)
-    {
-        if(other.gameObject.layer == 10){
+    void OnTriggerExit(Collider other) {
+
+        if (other.gameObject.layer == 10) {
 
             // Debug.Log("Key touched");
             pickUpObj = false;
@@ -38,30 +37,32 @@ public class PlayerCollision : MonoBehaviour{
 
     }
 
-    void checkKeyPress(){
+    void checkKeyPress() {
 
-        if(pickUpObj && Input.GetKeyDown(KeyCode.E)){
+        if (pickUpObj && Input.GetKeyDown(KeyCode.E)) {
 
-           if(lastItem.tag == "key_piece"){
+           if (lastItem.tag == "key_piece") {
 
                 // Debug.Log("E Key pressed ");
                 Destroy(lastItem);
                 hud.addItem();
                 hud.equipMessage(1,false);
            }
-           if(lastItem.tag == "chair_pick"){
+           if (lastItem.tag == "chair_pick") {
 
                 picked = true;
                 
             }
         }
     }
-    void moveObjPicked(){
-        if(picked){
-            
+    void moveObjPicked() {
+        if (picked) {
+
             lastItem.transform.position = pickDes.position; 
             hud.equipMessage(2,true);
-            if(Input.GetKeyDown(KeyCode.F)){
+
+            if (Input.GetKeyDown(KeyCode.F)) {
+                
                 picked = false;
                 hud.equipMessage(2,false);
             }

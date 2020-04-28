@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
-{
+public class Enemy : MonoBehaviour {
+
     public float health = 50f;
-    
     public float distanceFromWall = 0.5f;
     public float moveSpeed = 5f;
-
     private GameObject spawner;
-
     private bool alive;
 
     // Update is called once per frame
@@ -20,22 +17,25 @@ public class Enemy : MonoBehaviour
             // }
     
     void Start() {
+
         alive = true;
         SpawnEnemy.enemiesOnMap++;
-        
     }
-    void Update()
-    {
-        if(alive){
+    void Update() {
+
+        if (alive) {
             transform.Translate (0, 0, moveSpeed * Time.deltaTime);
             moveAround();
         }
     }
 
-    void moveAround(){
+    void moveAround() {
+
         Ray ray = new Ray (transform.position, transform.forward);
 		RaycastHit hit;
+
 		if (Physics.SphereCast (ray, 0.75f, out hit)) {
+
 			GameObject hitObject = hit.transform.gameObject;
 			// if (hitObject.GetComponent<PlayerInfo> ()) {
 				// if (_paintball == null) {
@@ -43,26 +43,31 @@ public class Enemy : MonoBehaviour
 				// 	_paintball.transform.position = transform.TransformPoint (Vector3.forward * 1.5f);
 				// 	_paintball.transform.rotation = transform.rotation;
 				// }
+
             if (hit.distance <= distanceFromWall) {
+
                 moveSpeed = 0f;
 				float angle = Random.Range (-110, 110);
 				transform.Rotate (0, angle, 0);
                 moveSpeed = 5f;
 			}
-			} //else
-		}
+		} //else
+	}
     //}
-    public void ReduceHealth(float damagePoint){
+    public void ReduceHealth(float damagePoint) {
+
         health -= damagePoint;
-        if(health <= 0f){
-           Despawn(); 
+
+        if (health <= 0f) {
+
+            Despawn(); 
         }
     }
     void Despawn(){
+
         SpawnEnemy.enemiesOnMap--;
         alive = false;
         Destroy(gameObject);
-
     }
 }
 
