@@ -5,7 +5,8 @@ public class PlayerCollision : MonoBehaviour {
     public HUD_script hud;
     private bool pickUpObj = false;
     private bool picked = false;
-    private GameObject lastItem;
+    private GameObject collidedItem;    
+    public Material leafMat;
     public Transform pickDes;
 
     void Update() {
@@ -19,11 +20,24 @@ public class PlayerCollision : MonoBehaviour {
 
         if (other.gameObject.layer == 10) {
 
-            // Debug.Log("Key touched");
-            lastItem = other.gameObject;
+            collidedItem = other.gameObject;
+            Debug.Log("Key touched");
+            // collidedItem = collidedItem;
             pickUpObj = true;
             hud.equipMessage(1,true); 
+            
+            if (collidedItem.tag == "plants") {
+
+                print("Change color");
+                // SetColor("nature_leaves",Color.red);
+                Material copiedMat = new Material(leafMat);
+                copiedMat.SetColor("_Color",Color.blue);
+                collidedItem.GetComponent<Renderer>().materials[2] = null;
+                print(collidedItem.GetComponent<Renderer>().materials[2]);
+                // collidedItem.GetComponent<Renderer>().material.shader.Find("nature_leaves");
+            }
         }
+        
     }
  
     void OnTriggerExit(Collider other) {
@@ -41,14 +55,14 @@ public class PlayerCollision : MonoBehaviour {
 
         if (pickUpObj && Input.GetKeyDown(KeyCode.E)) {
 
-           if (lastItem.tag == "key_piece") {
+           if (collidedItem.tag == "key_piece") {
 
                 // Debug.Log("E Key pressed ");
-                Destroy(lastItem);
+                Destroy(collidedItem);
                 hud.addItem();
                 hud.equipMessage(1,false);
            }
-           if (lastItem.tag == "chair_pick") {
+           if (collidedItem.tag == "chair_pick") {
 
                 picked = true;
                 
@@ -58,11 +72,11 @@ public class PlayerCollision : MonoBehaviour {
     void moveObjPicked() {
         if (picked) {
 
-            lastItem.transform.position = pickDes.position; 
+            collidedItem.transform.position = pickDes.position; 
             hud.equipMessage(2,true);
 
             if (Input.GetKeyDown(KeyCode.F)) {
-                
+
                 picked = false;
                 hud.equipMessage(2,false);
             }

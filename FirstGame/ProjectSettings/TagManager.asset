@@ -12,6 +12,7 @@ TagManager:
   - Canvas
   - key_piece
   - chair_pick
+  - plants
   layers:
   - Default
   - TransparentFX
