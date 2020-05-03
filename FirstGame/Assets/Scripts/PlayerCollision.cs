@@ -3,10 +3,12 @@
 public class PlayerCollision : MonoBehaviour {
 
     public HUD_script hud;
+    public MatPropertyBlock pBlock;
     private bool pickUpObj = false;
     private bool picked = false;
     private GameObject collidedItem;    
     public Material leafMat;
+    public Shader leafShad;
     public Transform pickDes;
 
     void Update() {
@@ -27,13 +29,32 @@ public class PlayerCollision : MonoBehaviour {
             hud.equipMessage(1,true); 
             
             if (collidedItem.tag == "plants") {
+                
+                pickUpObj = true;
+                // print("Change color");
+                // // SetColor("nature_leaves",Color.red);
+                // Material copiedMat = new Material(leafShad);
+                // // Material.Instantiate(leafMat);
+                // copiedMat.SetColor("_Color",Color.blue);
 
-                print("Change color");
-                // SetColor("nature_leaves",Color.red);
-                Material copiedMat = new Material(leafMat);
-                copiedMat.SetColor("_Color",Color.blue);
-                collidedItem.GetComponent<Renderer>().materials[2] = null;
-                print(collidedItem.GetComponent<Renderer>().materials[2]);
+                // int leng = collidedItem.GetComponent<Renderer>().materials.Length;
+                // Material[] matArr = new Material[leng];
+ 
+                // for (int i = 0; i < leng; i++) {
+                    
+                //     Material temp = collidedItem.GetComponent<Renderer>().materials[i]; 
+
+                //     if (i == 2) {
+                        
+                //         matArr[i] = copiedMat;
+
+                //     } else {
+
+                //         matArr[i] = temp; 
+                //     }
+                //     print(matArr[i]);
+                // }
+
                 // collidedItem.GetComponent<Renderer>().material.shader.Find("nature_leaves");
             }
         }
@@ -66,6 +87,10 @@ public class PlayerCollision : MonoBehaviour {
 
                 picked = true;
                 
+            }
+            if (collidedItem.tag == "plants") {
+
+                pBlock.colorChange = true;
             }
         }
     }
