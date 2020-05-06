@@ -98,6 +98,7 @@ public class PlayerCollision : MonoBehaviour {
         if (picked) {
 
             collidedItem.transform.position = pickDes.position; 
+            collidedItem.GetComponent<Rigidbody>().freezeRotation = true;
             hud.equipMessage(2,true);
 
             if (Input.GetKeyDown(KeyCode.F)) {
