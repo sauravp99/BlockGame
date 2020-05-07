@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour {
     public Transform groundObj;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+
+    public LayerMask itemMask;
     Vector3 velocity;
 
     void Update() {
@@ -23,21 +25,22 @@ public class PlayerMovement : MonoBehaviour {
         groundCheck();
     }
 
-    void OnCollisionStay(Collision obstacle) { //Takes in arg if we need to check which obj it is colliding to
+    // void OnCollisionStay(Collision obstacle) { //Takes in arg if we need to check which obj it is colliding to
         
-        if (obstacle.collider.tag == "Platform") {
+    //     if (obstacle.gameObject.layer == 9 && obstacle.gameObject.layer == 10) {
             
-            Debug.Log("Touching floor");
-            touchingFloor = true;
-        }
-    }
-    void stopRotation() {
+    //         Debug.Log("Touching floor");
+    //         touchingFloor = true;
+    //     }
+    // }
 
-        if(touchingFloor == true) {
+    // void stopRotation() {
 
-            rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
-        }
-    }
+    //     if(touchingFloor == true) {
+
+    //         rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+    //     }
+    // }
 
     void movement() {
         
@@ -64,12 +67,20 @@ public class PlayerMovement : MonoBehaviour {
     }
     
     void groundCheck() {
-
-        touchingFloor = Physics.CheckSphere(groundObj.position,groundDistance,groundMask);
         
-        if (touchingFloor && velocity.y < 0) {
+        if (Physics.CheckSphere(groundObj.position,groundDistance,groundMask) || Physics.CheckSphere(groundObj.position,groundDistance,itemMask)) {
 
-            velocity.y = -2f;
+            touchingFloor = true;
+            
+            if (touchingFloor && velocity.y < 0) {
+
+                velocity.y = -2f;
+            }
+
+        } else {
+
+            touchingFloor = false;
         }
+        
     }
 }

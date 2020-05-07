@@ -43,25 +43,10 @@ public class HUD_script : MonoBehaviour {
             //Disable keyslots
         }
     }
-    public void equipMessage(int choice,bool status) {
+    public void equipMessage(string msg, bool status) {
 
-        if (status) {
-
-            if (choice == 1) {
-
-                msgPanel.GetComponentInChildren<Text>().text = "Press E to equip";
-            
-            } else if (choice == 2) {
-
-                msgPanel.GetComponentInChildren<Text>().text = "Press F to drop";                 
-            }
-
-            msgPanel.SetActive(true);
-
-        } else {
-
-            msgPanel.SetActive(false);
-        }
+            msgPanel.GetComponentInChildren<Text>().text = msg;
+            msgPanel.SetActive(status);
     }
     public void addItem() {
         
