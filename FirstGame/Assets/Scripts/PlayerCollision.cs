@@ -19,7 +19,6 @@ public class PlayerCollision : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other) {
 
-            // :)
         if (other.gameObject.layer == 10) {
 
             collidedItem = other.gameObject;
@@ -53,15 +52,18 @@ public class PlayerCollision : MonoBehaviour {
                 hud.addItem();
                 hud.equipMessage("", false);
            }
-           
+
            if (collidedItem.tag == "chair_pick") {
 
                 picked = true;
                 
             }
             if (collidedItem.tag == "plants") {
-
-                pBlock.colorChange = true;
+                
+                if (bucketEquipped) {
+                    
+                    pBlock.colorChange = true;
+                }
             }
         }
     }
