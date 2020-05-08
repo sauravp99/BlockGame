@@ -133,10 +133,10 @@ namespace ProBuilder2.EditorCommon
 				{
 					if(go.GetComponents<Component>().Any(x => x == null) && !unfixable.Contains(go))
 					{
-						if(	(PrefabUtility.GetPrefabType(go) == PrefabType.PrefabInstance ||
-							 PrefabUtility.GetPrefabType(go) == PrefabType.Prefab ) )
+						if(	(PrefabUtility.GetPrefabAssetType(go) == PrefabAssetType.MissingAsset ||
+							 PrefabUtility.GetPrefabAssetType(go) == PrefabAssetType.Regular) )
 						{
-							GameObject pref = (GameObject)PrefabUtility.GetPrefabParent(go);
+							GameObject pref = (GameObject)PrefabUtility.GetCorrespondingObjectFromSource(go);
 
 							if(pref && (pref.GetComponent<pb_Object>() || pref.GetComponent<pb_Entity>()))
 							{

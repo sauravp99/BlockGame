@@ -13,6 +13,7 @@ TagManager:
   - key_piece
   - chair_pick
   - plants
+  - bucket
   layers:
   - Default
   - TransparentFX

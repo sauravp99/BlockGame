@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerCollision : MonoBehaviour {
 
     public HUD_script hud;
     public MatPropertyBlock pBlock;
-    private bool pickUpObj = false;
+    private bool interactWithObj = false;
     private bool picked = false;
     private bool bucketEquipped = false;
     private GameObject collidedItem;    
-    public Material leafMat;
-    public Shader leafShad;
+ 
     public Transform pickDes;
+
 
     void Update() {
 
@@ -21,43 +22,63 @@ public class PlayerCollision : MonoBehaviour {
 
         if (other.gameObject.layer == 10) {
 
-            collidedItem = other.gameObject;
-            pickUpObj = true;
-            hud.equipMessage("Press E to pick up", true); 
-        }
+            interactWithObj = true;
 
-        if (collidedItem.tag == "plants") {
+            if (other.gameObject.tag == "plants") {
+                
+                if (bucketEquipped) {
 
+                    hud.equipMessage("Press E to water plants", true); 
+                }
             
+            } else {
+
+                collidedItem = other.gameObject;
+                hud.equipMessage("Press E to pick up", true); 
+            }
         }
+
+        // if (collidedItem.tag == "spring" && bucketEquipped) {
+            
+        //     hud.equipMessage("Press E pour water", true); 
+        // }
         
     }
  
     void OnTriggerExit(Collider other) {
 
-        if (other.gameObject.layer == 10 || other.gameObject.tag == "plants") {
+        if (other.gameObject.layer == 10) {
 
-            pickUpObj = false;
+            interactWithObj = false;
             hud.equipMessage("", false); 
         }
     }
 
     void checkKeyPress() {
 
-        if (pickUpObj && Input.GetKeyDown(KeyCode.E)) {
+        if (interactWithObj && Input.GetKeyDown(KeyCode.E)) {
 
-           if (collidedItem.tag == "key_piece") {
+            if (collidedItem.tag == "key_piece") {
 
                 Destroy(collidedItem);
                 hud.addItem();
+                // hud.equipMessage("Key found!", true);
+                // StartCoroutine(waiter());
                 hud.equipMessage("", false);
-           }
+            }
 
-           if (collidedItem.tag == "chair_pick") {
+            if (collidedItem.tag == "chair_pick") {
 
                 picked = true;
-                
+
             }
+            
+            if (collidedItem.tag == "bucket") {
+                
+                picked = true;
+                bucketEquipped = true;
+            }
+
             if (collidedItem.tag == "plants") {
                 
                 if (bucketEquipped) {
@@ -65,22 +86,29 @@ public class PlayerCollision : MonoBehaviour {
                     pBlock.colorChange = true;
                 }
             }
+            interactWithObj = false;
         }
     }
     void moveObjPicked() {
+        
         if (picked) {
-
+            
             collidedItem.transform.position = pickDes.position; 
             collidedItem.GetComponent<Rigidbody>().freezeRotation = true;
-            hud.equipMessage("Press F to drop",2,true);
+            hud.equipMessage("Press F to drop", true);
 
             if (Input.GetKeyDown(KeyCode.F)) {
 
+                bucketEquipped = false;
                 picked = false;
-                hud.equipMessage(2,false);
+                hud.equipMessage("",false);
             }
         }
     }
+    // private IEnumerator waiter() {
+
+    //     yield return new WaitForSeconds(15);
+    // }
 }
 
 
