@@ -11,15 +11,15 @@ public class plant_trigger : MonoBehaviour {
         
         if (other.gameObject.tag == "Player" ) {
 
-            Debug.Log("Collided with player");
+            // Debug.Log("Collided with player");
 
             PlayerCollision col = other.gameObject.GetComponent<PlayerCollision>();
 
             if (col.bucketEquipped) {
 
-                Debug.Log("Color plant");
+                // Debug.Log("Color plant");
 
-                col.colorPlant();
+                col.colorPlant(tag);
                 
             }
             

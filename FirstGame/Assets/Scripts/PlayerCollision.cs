@@ -4,7 +4,13 @@ using System.Collections;
 public class PlayerCollision : MonoBehaviour {
 
     public HUD_script hud;
-    public MatPropertyBlock pBlock;
+    public MatPropertyBlock plant1;
+    public MatPropertyBlock plant2;
+    public MatPropertyBlock plant3;
+    public MatPropertyBlock plant4;
+    public MatPropertyBlock plant5;
+    public MatPropertyBlock plant6;
+
     private bool interactWithObj = false;
     private bool picked = false;
     public bool bucketEquipped = false;
@@ -26,15 +32,12 @@ public class PlayerCollision : MonoBehaviour {
 
         if (other.gameObject.layer == 10) {
 
-            if (other.gameObject.tag != "plants") {
-
-                interactWithObj = true;                
+                interactWithObj = true;                 
                 collidedItem = other.gameObject;
                 hud.equipMessage("Press E to pick up", true);
-            }
 
             }
-        }
+    }
 
         // if (collidedItem.tag == "spring" && bucketEquipped) {
             
@@ -80,9 +83,37 @@ public class PlayerCollision : MonoBehaviour {
         }
     }
 
-    public void colorPlant() {
+    public void colorPlant(string tag) {
+        
+        if (tag == "plant1") {
+            
+            plant1.colorChange = true;
+        }
 
-        pBlock.colorChange = true;
+        if (tag == "plant2") {
+            
+            plant2.colorChange = true;
+        }
+
+        if (tag == "plant3") {
+            
+            plant3.colorChange = true;
+        }
+
+        if (tag == "plant4") {
+
+            plant4.colorChange = true;
+        }
+
+        if (tag == "plant5") {
+
+            plant5.colorChange = true;
+        }
+
+        if (tag == "plant6") {
+
+            plant6.colorChange = true;
+        }
 
     }
     void moveObjPicked() {
