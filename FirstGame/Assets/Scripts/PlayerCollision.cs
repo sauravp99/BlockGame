@@ -7,12 +7,16 @@ public class PlayerCollision : MonoBehaviour {
     public MatPropertyBlock pBlock;
     private bool interactWithObj = false;
     private bool picked = false;
-    private bool bucketEquipped = false;
+    public bool bucketEquipped = false;
     private GameObject collidedItem;    
  
     public Transform pickDes;
 
+    public string heyDickHead() {
 
+        return "Fix this shit bro";
+
+    }
     void Update() {
 
         checkKeyPress();   
@@ -22,19 +26,13 @@ public class PlayerCollision : MonoBehaviour {
 
         if (other.gameObject.layer == 10) {
 
-            interactWithObj = true;
+            if (other.gameObject.tag != "plants") {
 
-            if (other.gameObject.tag == "plants") {
-                
-                if (bucketEquipped) {
-
-                    hud.equipMessage("Press E to water plants", true); 
-                }
-            
-            } else {
-
+                interactWithObj = true;                
                 collidedItem = other.gameObject;
-                hud.equipMessage("Press E to pick up", true); 
+                hud.equipMessage("Press E to pick up", true);
+            }
+
             }
         }
 
@@ -42,8 +40,6 @@ public class PlayerCollision : MonoBehaviour {
             
         //     hud.equipMessage("Press E pour water", true); 
         // }
-        
-    }
  
     void OnTriggerExit(Collider other) {
 
@@ -75,19 +71,19 @@ public class PlayerCollision : MonoBehaviour {
             
             if (collidedItem.tag == "bucket") {
                 
+                print(bucketEquipped);
                 picked = true;
                 bucketEquipped = true;
             }
-
-            if (collidedItem.tag == "plants") {
-                
-                if (bucketEquipped) {
-                    
-                    pBlock.colorChange = true;
-                }
-            }
+            
             interactWithObj = false;
         }
+    }
+
+    public void colorPlant() {
+
+        pBlock.colorChange = true;
+
     }
     void moveObjPicked() {
         

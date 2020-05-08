@@ -10174,7 +10174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3da2ab99e7e6f1d49b3914084f020472, type: 3}
       propertyPath: m_TagString
-      value: chair_pick
+      value: bucket
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3da2ab99e7e6f1d49b3914084f020472, type: 3}
       propertyPath: m_Layer
@@ -10344,6 +10344,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
+      propertyPath: m_TagString
+      value: bucket
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26328,7 +26332,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-43092
+  m_Name: pb_Mesh16844
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30195,6 +30199,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 77481a7c618d8c14cbf3663b6c659704, type: 3}
+--- !u!114 &1978962655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978962649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef62306f6a87b5e4c9a1dd4f8829be1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1991409974
 GameObject:
   m_ObjectHideFlags: 0
@@ -31608,6 +31624,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 622854871}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &2088362627
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088362624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Center: {x: 0.0000076293945, y: -0.00000011920929, z: 0}
 --- !u!54 &2088362629 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 1610335419797248217, guid: 30ca1def70263d24f99ee973e2cc6ad5,
@@ -31628,6 +31657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hud: {fileID: 594695296}
   pBlock: {fileID: 1978962652}
+  bucketEquipped: 0
   pickDes: {fileID: 875076108}
 --- !u!4 &2088362632 stripped
 Transform:
