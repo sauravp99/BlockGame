@@ -15,14 +15,10 @@ public class PlayerCollision : MonoBehaviour {
     private bool picked = false;
     public bool bucketEquipped = false;
     private GameObject collidedItem;    
+    private bool plantTouched = false;
  
     public Transform pickDes;
 
-    public string heyDickHead() {
-
-        return "Fix this shit bro";
-
-    }
     void Update() {
 
         checkKeyPress();   
@@ -32,11 +28,15 @@ public class PlayerCollision : MonoBehaviour {
 
         if (other.gameObject.layer == 10) {
 
-                interactWithObj = true;                 
-                collidedItem = other.gameObject;
-                hud.equipMessage("Press E to pick up", true);
+            interactWithObj = true;                 
+            collidedItem = other.gameObject;
+            hud.equipMessage("Press E to pick up", true);
 
-            }
+        }   
+        if(other.gameObject.layer == 11) {
+            
+            plantTouched = true;
+        }
     }
 
         // if (collidedItem.tag == "spring" && bucketEquipped) {
@@ -50,6 +50,10 @@ public class PlayerCollision : MonoBehaviour {
 
             interactWithObj = false;
             hud.equipMessage("", false); 
+        }
+        if(other.gameObject.layer == 11) {
+            
+            plantTouched = false;
         }
     }
 
@@ -122,7 +126,11 @@ public class PlayerCollision : MonoBehaviour {
             
             collidedItem.transform.position = pickDes.position; 
             collidedItem.GetComponent<Rigidbody>().freezeRotation = true;
-            hud.equipMessage("Press F to drop", true);
+
+            if(plantTouched == false) {
+                
+                hud.equipMessage("Press F to drop", true);
+            }
 
             if (Input.GetKeyDown(KeyCode.F)) {
 

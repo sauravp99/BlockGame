@@ -2,29 +2,37 @@
 
 public class plant_trigger : MonoBehaviour {
 
+    public HUD_script hud;
+    private bool waterReady = false;
+    public GameObject bucket;
 
     void Update() {
     
         
     }
     private void OnTriggerEnter(Collider other) {
-        
-        if (other.gameObject.tag == "Player" ) {
 
-            // Debug.Log("Collided with player");
+        GameObject col = other.gameObject;
 
-            PlayerCollision col = other.gameObject.GetComponent<PlayerCollision>();
+        if(col.tag == "Player" && col.GetComponent<PlayerCollision>().bucketEquipped) {
 
-            if (col.bucketEquipped) {
+            hud.equipMessage("Press E to water plant", true);
 
-                // Debug.Log("Color plant");
+            // if(Input.GetKeyDown(KeyCode.E)) {
 
-                col.colorPlant(tag);
-                
-            }
-            
-            
+                print("Water plant");
+                bucket.GetComponent<interactPlants>().pourWater();
+                col.GetComponent<PlayerCollision>().colorPlant(tag);
+            // }                
         }
+    }
+    private void waterPlant() {
         
+        if(waterReady) {
+
+            hud.equipMessage("Press E to water plant", true);
+        }
+
+        hud.equipMessage("", false);
     }
 }
