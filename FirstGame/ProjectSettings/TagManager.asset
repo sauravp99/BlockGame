@@ -14,6 +14,12 @@ TagManager:
   - chair_pick
   - plants
   - bucket
+  - plant1
+  - plant2
+  - plant3
+  - plant4
+  - plant5
+  - plant6
   layers:
   - Default
   - TransparentFX
@@ -25,8 +31,8 @@ TagManager:
   - 
   - Environment
   - Floor
-  - PickUpItem
-  - 
+  - Interactable
+  - Vegetation
   - 
   - 
   - 

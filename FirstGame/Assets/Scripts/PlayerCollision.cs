@@ -82,7 +82,7 @@ public class PlayerCollision : MonoBehaviour {
             interactWithObj = false;
         }
     }
-
+    // Modularize into arrays / hashmaps
     public void colorPlant(string tag) {
         
         if (tag == "plant1") {
