@@ -3,44 +3,72 @@
 public class interactPlants : MonoBehaviour {
 
     private int timesPoured = 0;
-    // private bool bucketEmpty = false;
+    public bool bucketEmpty = true;
     public GameObject renderedWater;
-    private float timer;
+    public Transform defaultWaterSpawn;
+    private float timePassed;
+    private int timer = 0;
 
     void Update() {
         
+        if (bucketEmpty == false) {
+            
+            decreaseWaterLevel();
+        }
     }
-    private void FixedUpdate() {
 
-        renderedWater.SetActive(true);
-        timer += Time.deltaTime;
+    // private void FixedUpdate() {
+
+    //     decreaseWaterLevel();   
+    // }
+
+    void decreaseWaterLevel() { //Moves renderedWater -0.015f down Y axis every sec
         
-        if(timer > 1) { 
-             
-            timer -= 1;
+        timePassed += Time.deltaTime;
+        
+        if (timePassed > 1) { 
+            
+            print(timer++); //todo: stop timer after bucketEmpty -> true
+            timePassed -= 1;
+            decrease();
 
-         renderedWater.transform.position = renderedWater.transform.position + new Vector3(0,-0.05f,0);
-        }    
+            if (timer == 30) {
+
+                emptyBucket();
+            }
+        }
+    }
+
+    void decrease() {
+
+        renderedWater.transform.position = renderedWater.transform.position + new Vector3(0,-0.015f,0);
     }
 
     public void pourWater() {
 
-        renderedWater.SetActive(true);
         timesPoured++;
-        renderedWater.transform.position = renderedWater.transform.position + new Vector3(0,-0.05f,0);
+        decrease();
 
-        if(timesPoured == 3) {
-            
+        if (timesPoured == 6) {
+
             emptyBucket();
         }
     }
+
     void fillWater() {
 
+        //todo: Fill water from container 
         renderedWater.SetActive(true);
+        renderedWater.transform.position = defaultWaterSpawn.position;
+        bucketEmpty = false;
     }
+
     void emptyBucket() {
-    
-            timesPoured = 0;
-            renderedWater.SetActive(false);
-        }
+
+        bucketEmpty = true;
+        renderedWater.SetActive(false);
+        /**todo:
+            switch animation to stop water pouring from bucket hole
+        **/
     }
+}
