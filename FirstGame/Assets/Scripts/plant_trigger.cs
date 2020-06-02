@@ -5,30 +5,39 @@ public class plant_trigger : MonoBehaviour {
     public HUD_script hud;
     bool waterReady = false;
     public GameObject bucket;
+    GameObject col;
+    bool readyToInteract;
 
     void Update() {
-    
-        
+
+        checkKeyPress();
     }
     void OnTriggerEnter(Collider other) {
 
-        GameObject col = other.gameObject;
+        col = other.gameObject;
 
         if(col.tag == "Player" && col.GetComponent<PlayerCollision>().bucketEquipped) {
 
+            readyToInteract = true;
             hud.equipMessage("Press E to water plant", true);
-            
                            
         }
     }
 
+    void OnTriggerExit(Collider other) {
+        
+        readyToInteract = false;
+    }
+
     void checkKeyPress() {
 
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if (readyToInteract && Input.GetKeyDown(KeyCode.E)) {
 
                 print("Water plant");
-                bucket.GetComponent<interactPlants>().pourWater();
-                col.GetComponent<PlayerCollision>().colorPlant(tag);
+                if (col.GetComponent<PlayerCollision>().colorPlant(tag)) {
+
+                    bucket.GetComponent<interactPlants>().pourWater();
+                }
             }    
     }
 

@@ -87,38 +87,45 @@ public class PlayerCollision : MonoBehaviour {
         }
     }
     // Modularize into arrays / hashmaps
-    public void colorPlant(string tag) {
+    public bool colorPlant(string tag) {
         
-        if (tag == "plant1") {
+        if (tag == "plant1" && plant1.colorChange != true) {
             
             plant1.colorChange = true;
+            return true;
         }
 
-        if (tag == "plant2") {
+        if (tag == "plant2" && plant2.colorChange != true) {
             
             plant2.colorChange = true;
+            return true;
         }
 
-        if (tag == "plant3") {
+        if (tag == "plant3" && plant3.colorChange != true) {
             
             plant3.colorChange = true;
+            return true;
         }
 
-        if (tag == "plant4") {
+        if (tag == "plant4" && plant4.colorChange != true) {
 
             plant4.colorChange = true;
+            return true;
         }
 
-        if (tag == "plant5") {
+        if (tag == "plant5" && plant5.colorChange != true) {
 
             plant5.colorChange = true;
+            return true;
         }
 
-        if (tag == "plant6") {
+        if (tag == "plant6" && plant6.colorChange != true) {
 
             plant6.colorChange = true;
+            return true;
         }
-
+        
+        return false;
     }
     void moveObjPicked() {
         
