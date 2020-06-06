@@ -5,6 +5,7 @@ public class interactPlants : MonoBehaviour { //Change name: bucket_interaction
     private int timesPoured = 0;
     public bool bucketEmpty = true;
     public GameObject renderedWater;
+    public GameObject player;
     public Transform defaultWaterSpawn;
     private float timePassed;
     private int timer = 0;
@@ -37,7 +38,7 @@ public class interactPlants : MonoBehaviour { //Change name: bucket_interaction
             timePassed -= 1;
             decrease();
 
-            if (timer == 30) {
+            if (timer == 20) {
 
                 emptyBucket();
             }
@@ -71,8 +72,9 @@ public class interactPlants : MonoBehaviour { //Change name: bucket_interaction
     void emptyBucket() {
 
         bucketEmpty = true;
-        print(bucketEmpty); 
         renderedWater.SetActive(false);
+        print("Bucket emptied");
+        player.GetComponent<PlayerCollision>().deactivatePlants();
         /**todo:
             - switch animation to stop water pouring from bucket hole
             - display "bucket empty" on message board

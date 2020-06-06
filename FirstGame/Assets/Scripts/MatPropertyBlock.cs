@@ -8,7 +8,7 @@ public class MatPropertyBlock : MonoBehaviour {
     public bool colorChange = false;
     private MaterialPropertyBlock _propBlock;
  
-    void Awake() {
+    void Start() {
 
         _propBlock = new MaterialPropertyBlock();
         _renderer = GetComponent<Renderer>();
@@ -22,7 +22,7 @@ public class MatPropertyBlock : MonoBehaviour {
         }
     }
     
-    void changeColor() {
+    public void changeColor() {
         
         // Get the current value of the material properties in the renderer.
         _renderer.GetPropertyBlock(_propBlock);
@@ -32,6 +32,14 @@ public class MatPropertyBlock : MonoBehaviour {
         _propBlock.SetColor("_Color", Color.green);
         // Apply the edited values to the renderer.
         _renderer.SetPropertyBlock(_propBlock);
+    }
+
+    public void revertColor() {
+
+        _renderer.GetPropertyBlock(_propBlock);
+        _propBlock.SetColor("_Color", Color.grey);
+        _renderer.SetPropertyBlock(_propBlock);
+
     }
 
 }

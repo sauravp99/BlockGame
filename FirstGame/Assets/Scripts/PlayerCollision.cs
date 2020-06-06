@@ -92,50 +92,62 @@ public class PlayerCollision : MonoBehaviour {
     // Modularize into arrays / hashmaps
     public bool colorPlant(string tag) {
         
-        if (tag == "plant1" && plant1.colorChange != true) {
+        if (tag == "plant1" && plant1.colorChange == false) {
             
-            plant1.colorChange = true;
+            plant1.changeColor();
             countPlants();
             return true;
         }
 
-        if (tag == "plant2" && plant2.colorChange != true) {
+        if (tag == "plant2" && plant2.colorChange == false) {
             
-            plant2.colorChange = true;
+            plant2.changeColor();
             countPlants();
             return true;
         }
 
         if (tag == "plant3" && plant3.colorChange == false) {
             
-            print("Change color");
-            plant3.colorChange = true;
+            plant3.changeColor();
             countPlants();
             return true;
         }
 
-        if (tag == "plant4" && plant4.colorChange != true) {
+        if (tag == "plant4" && plant4.colorChange == false) {
 
-            plant4.colorChange = true;
+            plant4.changeColor();
             countPlants();
             return true;
         }
 
-        if (tag == "plant5" && plant5.colorChange != true) {
+        if (tag == "plant5" && plant5.colorChange == false) {
 
-            plant5.colorChange = true;
+            plant5.changeColor();
             countPlants();
             return true;
         }
 
         if (tag == "plant6" && plant6.colorChange != true) {
 
-            plant6.colorChange = true;
+            plant6.changeColor();
             countPlants();
             return true;
         }
         return false;
     }
+
+    public void deactivatePlants() {
+        
+        print("Deactivate");
+        plant1.revertColor();
+        plant2.revertColor();
+        plant3.revertColor();
+        plant4.revertColor();
+        plant5.revertColor();
+        plant6.revertColor();
+
+    } 
+
     void moveObjPicked() {
         
         if (picked) {
