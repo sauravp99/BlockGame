@@ -101,8 +101,9 @@ public class PlayerCollision : MonoBehaviour {
             return true;
         }
 
-        if (tag == "plant3" && plant3.colorChange != true) {
+        if (tag == "plant3" && plant3.colorChange == false) {
             
+            print("Change color");
             plant3.colorChange = true;
             return true;
         }
@@ -124,7 +125,6 @@ public class PlayerCollision : MonoBehaviour {
             plant6.colorChange = true;
             return true;
         }
-        
         return false;
     }
     void moveObjPicked() {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class interactPlants : MonoBehaviour {
+public class interactPlants : MonoBehaviour { //Change name: bucket_interaction
 
     private int timesPoured = 0;
     public bool bucketEmpty = true;
@@ -8,13 +8,17 @@ public class interactPlants : MonoBehaviour {
     public Transform defaultWaterSpawn;
     private float timePassed;
     private int timer = 0;
+    //Test
+    float tempTime = 0;
 
     void Update() {
         
         if (bucketEmpty == false) {
-            
+            // print("decreasing water!!!");
             decreaseWaterLevel();
         }
+
+        checkValue();
     }
 
     // private void FixedUpdate() {
@@ -28,11 +32,12 @@ public class interactPlants : MonoBehaviour {
         
         if (timePassed > 1) { 
             
-            print(timer++); //todo: stop timer after bucketEmpty -> true
+            timer++;
+            // print(timer++); //todo: stop timer after bucketEmpty -> true
             timePassed -= 1;
             decrease();
 
-            if (timer == 30) {
+            if (timer == 5) {
 
                 emptyBucket();
             }
@@ -41,7 +46,7 @@ public class interactPlants : MonoBehaviour {
 
     void decrease() {
 
-        renderedWater.transform.position = renderedWater.transform.position + new Vector3(0,-0.015f,0);
+        renderedWater.transform.position = renderedWater.transform.position + new Vector3(0,-0.1f,0); //(0,-0.15f,0)
     }
 
     public void pourWater() {
@@ -66,9 +71,22 @@ public class interactPlants : MonoBehaviour {
     void emptyBucket() {
 
         bucketEmpty = true;
+        print(bucketEmpty); 
         renderedWater.SetActive(false);
         /**todo:
-            switch animation to stop water pouring from bucket hole
+            - switch animation to stop water pouring from bucket hole
+            - display "bucket empty" on message board
         **/
+    }
+    //test
+    void checkValue() {
+    
+        tempTime += Time.deltaTime;
+
+        if (tempTime > 0.5f){
+            
+            print(bucketEmpty);
+            tempTime = 0;
+        }
     }
 }

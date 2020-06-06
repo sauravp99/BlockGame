@@ -6,7 +6,7 @@ public class plant_trigger : MonoBehaviour {
     bool waterReady = false;
     public GameObject bucket;
     GameObject col;
-    bool readyToInteract;
+    bool readyToInteract; 
 
     void Update() {
 
@@ -14,9 +14,10 @@ public class plant_trigger : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other) {
 
-        col = other.gameObject;
 
-        if(col.tag == "Player" && col.GetComponent<PlayerCollision>().bucketEquipped) {
+        if(other.gameObject.tag == "Player" && other.gameObject.GetComponent<PlayerCollision>().bucketEquipped) {
+            
+            col = other.gameObject;
 
             readyToInteract = true;
             hud.equipMessage("Press E to water plant", true);
@@ -33,21 +34,26 @@ public class plant_trigger : MonoBehaviour {
 
         if (readyToInteract && Input.GetKeyDown(KeyCode.E)) {
 
-                print("Water plant");
-                if (col.GetComponent<PlayerCollision>().colorPlant(tag)) {
-
+                if (bucket.GetComponent<interactPlants>().bucketEmpty == false) {
+                    
+                    print("Water plant");
+                    col.GetComponent<PlayerCollision>().colorPlant(tag);
                     bucket.GetComponent<interactPlants>().pourWater();
+                
+                } else {
+                    
+                    print("Already watered");
                 }
             }    
     }
 
-    void waterPlant() {
+    // void waterPlant() {
         
-        if(waterReady) {
+    //     if(waterReady) {
 
-            hud.equipMessage("Press E to water plant", true);
-        }
+    //         hud.equipMessage("Press E to water plant", true);
+    //     }
 
-        hud.equipMessage("", false);
-    }
+    //     hud.equipMessage("", false);
+    // }
 }
