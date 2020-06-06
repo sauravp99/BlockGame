@@ -18,7 +18,7 @@ public class interactPlants : MonoBehaviour { //Change name: bucket_interaction
             decreaseWaterLevel();
         }
 
-        checkValue();
+        // Debug: checkValue();
     }
 
     // private void FixedUpdate() {
@@ -37,7 +37,7 @@ public class interactPlants : MonoBehaviour { //Change name: bucket_interaction
             timePassed -= 1;
             decrease();
 
-            if (timer == 5) {
+            if (timer == 30) {
 
                 emptyBucket();
             }
@@ -46,7 +46,7 @@ public class interactPlants : MonoBehaviour { //Change name: bucket_interaction
 
     void decrease() {
 
-        renderedWater.transform.position = renderedWater.transform.position + new Vector3(0,-0.1f,0); //(0,-0.15f,0)
+        renderedWater.transform.position = renderedWater.transform.position + new Vector3(0,-0.015f,0); //(0,-0.15f,0)
     }
 
     public void pourWater() {

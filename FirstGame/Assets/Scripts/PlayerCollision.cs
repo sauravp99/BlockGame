@@ -11,6 +11,9 @@ public class PlayerCollision : MonoBehaviour {
     public MatPropertyBlock plant5;
     public MatPropertyBlock plant6;
 
+    int plant_counter = 0;
+    public bool allPlantsActive = false;
+
     private bool interactWithObj = false;
     private bool picked = false;
     public bool bucketEquipped = false;
@@ -92,12 +95,14 @@ public class PlayerCollision : MonoBehaviour {
         if (tag == "plant1" && plant1.colorChange != true) {
             
             plant1.colorChange = true;
+            countPlants();
             return true;
         }
 
         if (tag == "plant2" && plant2.colorChange != true) {
             
             plant2.colorChange = true;
+            countPlants();
             return true;
         }
 
@@ -105,24 +110,28 @@ public class PlayerCollision : MonoBehaviour {
             
             print("Change color");
             plant3.colorChange = true;
+            countPlants();
             return true;
         }
 
         if (tag == "plant4" && plant4.colorChange != true) {
 
             plant4.colorChange = true;
+            countPlants();
             return true;
         }
 
         if (tag == "plant5" && plant5.colorChange != true) {
 
             plant5.colorChange = true;
+            countPlants();
             return true;
         }
 
         if (tag == "plant6" && plant6.colorChange != true) {
 
             plant6.colorChange = true;
+            countPlants();
             return true;
         }
         return false;
@@ -146,6 +155,18 @@ public class PlayerCollision : MonoBehaviour {
                 hud.equipMessage("",false);
             }
         }
+    }
+
+    void countPlants() {
+
+        plant_counter++;
+        
+        if (plant_counter == 6) {
+
+            allPlantsActive = true;
+            
+        }
+
     }
     // private IEnumerator waiter() {
 
