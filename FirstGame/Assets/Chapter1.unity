@@ -6164,7 +6164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770ef0717bc270f458c5f3a2c015e2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger_keys: {fileID: 2088362624}
+  key_trigger: {fileID: 2088362624}
 --- !u!23 &210919123
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10376,15 +10376,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3da2ab99e7e6f1d49b3914084f020472, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.38
+      value: 41.29649
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3da2ab99e7e6f1d49b3914084f020472, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2
+      value: 1.1809025
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3da2ab99e7e6f1d49b3914084f020472, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.37
+      value: -18.190203
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3da2ab99e7e6f1d49b3914084f020472, type: 3}
       propertyPath: m_LocalRotation.x
@@ -10754,7 +10754,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25412
+  m_Name: pb_Mesh21362
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13932,7 +13932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770ef0717bc270f458c5f3a2c015e2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger_keys: {fileID: 2088362624}
+  key_trigger: {fileID: 2088362624}
 --- !u!1 &621269515
 GameObject:
   m_ObjectHideFlags: 0
@@ -22172,7 +22172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770ef0717bc270f458c5f3a2c015e2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger_keys: {fileID: 2088362624}
+  key_trigger: {fileID: 2088362624}
 --- !u!43 &1151297383
 Mesh:
   m_ObjectHideFlags: 0
@@ -22787,6 +22787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bucketEmpty: 0
   renderedWater: {fileID: 388482456}
+  player: {fileID: 2088362624}
   defaultWaterSpawn: {fileID: 647972008}
 --- !u!4 &1215983786 stripped
 Transform:
@@ -24534,7 +24535,6 @@ GameObject:
   - component: {fileID: 1308856625}
   - component: {fileID: 1308856624}
   - component: {fileID: 1308856627}
-  - component: {fileID: 1308856628}
   m_Layer: 10
   m_Name: Piece_1 (2)
   m_TagString: key_piece
@@ -24627,20 +24627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770ef0717bc270f458c5f3a2c015e2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger_keys: {fileID: 2088362624}
---- !u!114 &1308856628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1308856622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 770ef0717bc270f458c5f3a2c015e2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trigger_keys: {fileID: 0}
+  key_trigger: {fileID: 2088362624}
 --- !u!1 &1330328872
 GameObject:
   m_ObjectHideFlags: 0
@@ -25028,7 +25015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425482688}
   m_LocalRotation: {x: -0.0073139775, y: 0.72031677, z: 0.00899228, w: 0.6935484}
-  m_LocalPosition: {x: 46.81351, y: 1.8890976, z: 20.260204}
+  m_LocalPosition: {x: 41.73, y: 1.87, z: -15.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2088362632}
@@ -28480,7 +28467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770ef0717bc270f458c5f3a2c015e2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger_keys: {fileID: 2088362624}
+  key_trigger: {fileID: 2088362624}
 --- !u!1 &1683584481
 GameObject:
   m_ObjectHideFlags: 0
@@ -32098,6 +32085,7 @@ MonoBehaviour:
   plant4: {fileID: 1783049854}
   plant5: {fileID: 2077401257}
   plant6: {fileID: 1212956701}
+  allPlantsActive: 0
   bucketEquipped: 0
   pickDes: {fileID: 875076108}
 --- !u!4 &2088362632 stripped
