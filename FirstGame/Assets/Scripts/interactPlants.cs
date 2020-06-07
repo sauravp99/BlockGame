@@ -61,7 +61,7 @@ public class interactPlants : MonoBehaviour { //Change name: bucket_interaction
         }
     }
 
-    void fillWater() {
+    public void fillWater() {
 
         //todo: Fill water from container 
         renderedWater.SetActive(true);
@@ -72,6 +72,7 @@ public class interactPlants : MonoBehaviour { //Change name: bucket_interaction
     void emptyBucket() {
 
         bucketEmpty = true;
+        timesPoured = 0;
         renderedWater.SetActive(false);
         print("Bucket emptied");
         player.GetComponent<PlayerCollision>().deactivatePlants();
